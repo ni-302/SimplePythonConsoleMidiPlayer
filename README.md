@@ -1,0 +1,2 @@
+# SimplePythonConsoleMidiPlayer
+コンソールで動作するシンプルなMIDIプレイヤー
