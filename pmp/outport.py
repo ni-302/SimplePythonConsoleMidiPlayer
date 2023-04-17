@@ -9,6 +9,7 @@ port = None
 # midiデバイスを選択させる
 def select_midi_device():
     midi = mido.get_output_names()
+    midi_device_list = midi
     midi_devices = {}
     for i, device in enumerate(midi):
         device_name = device.rsplit(' ', 1)[0]
@@ -24,7 +25,8 @@ def select_midi_device():
                 print(f"入力された値が不正です。1から{n}までの数字を入力してください。")
             else:
                 global port
-                port = mido.open_output(result)
+                device_number = int(user_input - 1)
+                port = mido.open_output(midi_device_list[device_number])
                 return midi_devices[str(user_input)]
         except ValueError:
             print("数字を入力してください。")
