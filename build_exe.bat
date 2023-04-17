@@ -1,0 +1,1 @@
+pyinstaller main.py --hidden-import pmp.midiplayer --hidden-import pmp.outport --hidden-import mido --hidden-import sys --hidden-import mido.backends.rtmidi --onefile --icon=SimplePythonConsoleMidiPlayer.ico --name=SimplePythonConsoleMidiPlayer
