@@ -28,6 +28,6 @@
 
 # 引数について
 1. `python main.py <ファイルのパス>`で指定したファイルを先頭のMIDIデバイスで再生することができます。
-2. Windows exe版でも、コンソールから`SimplePythonConsoleMidiPlayer.exe <ファイルのパス>`で1.と同様の動作を行います。。
+2. Windows exe版でも、コンソールから`SimplePythonConsoleMidiPlayer.exe <ファイルのパス>`で1.と同様の動作を行います。
 <br>※exeファイルの名前を変更しても同じ構文で同様の動作になります。
 3. 再生が終わると自動的に終了します。
