@@ -13,7 +13,7 @@ player = pmp.midiplayer
 selected_device = outport.select_midi_device()
 print(f"選択されたデバイス : {selected_device}")
 
-# midiファイルを再生
+# midiファイルを再生する
 try:
     player.midiplayer()
 except KeyboardInterrupt:

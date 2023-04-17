@@ -1,7 +1,6 @@
 # ライブラリをインポート
 import mido
 import sys
-import time
 
 # 他ファイルのインポート
 import pmp.outport
@@ -13,9 +12,12 @@ outport = pmp.outport
 def midiplayer():
     while True:
         try:
-            user_input = input("ファイルを絶対パスで指定してください。 : ")
+            user_input = input("ファイルを絶対パスで指定してください。\nアプリケーションを終了する場合は\"exit\"と入力してください。\n>")
             if user_input == "":
                 continue
+            if user_input == "exit":
+                sys.exit
+                return
             if not user_input.endswith(".mid"):
                 if not user_input.endswith(".midi"):
                     if not user_input.endswith(".mid\""):
@@ -39,11 +41,6 @@ def midiplayer():
         except KeyboardInterrupt:
             sys.exit()
     mid = mido.MidiFile(midifile)
-    mido.Message('reset')
-    for i, track in enumerate(mid.tracks):
-        print('Track {}: {}'.format(i, track.name))
-    for message in mid:
-        time.sleep(message.time)
-        if not message.is_meta:
-            outport.port.send(message)
+    for msg in mid.play():
+        outport.port.send(msg)
     midiplayer()

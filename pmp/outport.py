@@ -30,3 +30,7 @@ def select_midi_device():
             print("数字を入力してください。")
         except KeyboardInterrupt:
             sys.exit
+
+# midiデバイスを閉じる
+def close_midi_device():
+    port.close()
