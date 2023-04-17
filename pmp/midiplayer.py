@@ -16,14 +16,15 @@ def midiplayer():
             if user_input == "":
                 continue
             if user_input == "exit":
-                sys.exit
+                sys.exit()
                 return
             if not user_input.endswith(".mid"):
                 if not user_input.endswith(".midi"):
                     if not user_input.endswith(".mid\""):
                         if not user_input.endswith(".midi\""):
                             print(".midまたは.midiファイルを指定してください。")
-                            continue
+                            sys.exit()
+                            return
                         else:
                             user_input = user_input.strip('"')
                             midifile = user_input
@@ -44,3 +45,36 @@ def midiplayer():
     for msg in mid.play():
         outport.port.send(msg)
     midiplayer()
+
+def midiplayerargs(arg1):
+    while True:
+        try:
+            user_input = arg1
+            if user_input == "":
+                sys.exit()
+                return
+            if not user_input.endswith(".mid"):
+                if not user_input.endswith(".midi"):
+                    if not user_input.endswith(".mid\""):
+                        if not user_input.endswith(".midi\""):
+                            sys.exit()
+                        else:
+                            user_input = user_input.strip('"')
+                            midifile = user_input
+                            break
+                    else:
+                        user_input = user_input.strip('"')
+                        midifile = user_input
+                        break
+                else:
+                    midifile = user_input
+                    break
+            else:
+                midifile = user_input
+                break
+        except KeyboardInterrupt:
+            sys.exit()
+    mid = mido.MidiFile(midifile)
+    for msg in mid.play():
+        outport.port.send(msg)
+    sys.exit()

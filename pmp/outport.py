@@ -31,7 +31,13 @@ def select_midi_device():
         except ValueError:
             print("数字を入力してください。")
         except KeyboardInterrupt:
-            sys.exit
+            sys.exit()
+
+def auto_select_midi_device():
+    midi = mido.get_output_names()
+    midi_device_list = midi
+    global port
+    port = mido.open_output(midi_device_list[0])
 
 # midiデバイスを閉じる
 def close_midi_device():
